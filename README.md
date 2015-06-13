@@ -19,7 +19,7 @@ You can customize the name of the person in the joke by passing in the
 `first_name` and `last_name` as options:
 
 ```
-joke = ChuckNorris::JokeFinder.new.get_joke(first_name: 'Spencer', last_name: 'Dixon')
+joke = ChuckNorris::JokeFinder.get_joke(first_name: 'Spencer', last_name: 'Dixon')
 joke.joke # => "Spencer Dixon doesn't read books. He stares them down until he gets the information he wants."
 ```
 
