@@ -23,5 +23,10 @@ module ChuckNorris
       response = execute(:get, "/jokes/count")
       response["value"]
     end
+
+    def self.find_joke(id)
+      response = execute(:get, "/jokes/#{id}")
+      Joke.new(response["value"])
+    end
   end
 end

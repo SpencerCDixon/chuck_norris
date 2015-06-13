@@ -7,6 +7,5 @@ require "json"
 require 'pry'
 
 module ChuckNorris
-  class FailedRequestError < StandardError; end
 end
 
