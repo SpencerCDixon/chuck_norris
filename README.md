@@ -1,8 +1,62 @@
 # ChuckNorris
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/chuck_norris`. To experiment with that code, run `bin/console` for an interactive prompt.
+ChuckNorris is a light weight Ruby wrapper around the Chuck Norris Joke API [found
+here](http://www.icndb.com/api/).  It contains a series of Chuck Norris jokes
+which can be customized with an individuals first and last name.
 
-TODO: Delete this and the text above, and describe your gem
+## Usage
+
+#### Getting Random Joke
+Jokes have an id, joke, and categories you can query.
+```
+joke = ChuckNorris::JokeFinder.get_joke
+joke.id # => 497
+joke.joke # => "If Chuck Norris writes code with bugs, the bugs fix themselves." 
+joke.categories # => ["nerdy"]
+```
+
+You can customize the name of the person in the joke by passing in the
+`first_name` and `last_name` as options:
+
+```
+joke = ChuckNorris::JokeFinder.new.get_joke(first_name: 'Spencer', last_name: 'Dixon')
+joke.joke # => "Spencer Dixon doesn't read books. He stares them down until he gets the information he wants."
+```
+
+
+#### Getting Multiple Jokes
+You can get multiple jokes by passing the number you want as an argument to the
+`ChuckNorris.get_jokes` method. **NOTE** the `s` at the end.
+
+```
+jokes = ChuckNorris::JokeFinder.get_jokes(3)
+jokes[0].joke 
+# => "When Chuck Norris throws exceptions, it's across the room."
+
+jokes[1].joke 
+# => "The only sure things are Death and Taxes and when Chuck Norris goes to work for the IRS, they'll be the same thing." 
+
+jokes[2].joke 
+# => 
+```
+
+#### Finding Specific Joke
+You can fetch a specific joke by its `id`
+
+```
+bug_joke = ChuckNorris::JokeFinder.find_joke(497)
+bug_joke.joke # => "If Chuck Norris writes code with bugs, the bugs fix themselves." 
+```
+
+#### Fetching Joke Categories
+```
+categories = ChuckNorris::JokeFinder.joke_categories
+```
+
+#### Fetching Total Number Of Jokes
+```
+total = ChuckNorris::JokeFinder.joke_count
+```
 
 ## Installation
 
@@ -20,9 +74,6 @@ Or install it yourself as:
 
     $ gem install chuck_norris
 
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
